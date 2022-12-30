@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Example, Months }  from './Example';
+import Counter2 from './Counter';
+import Info from './Info';
+import ContextSample from './ContextSample';
+import FriendStatusWithCounter from './Ex2';
 
-function App() {
+
+const App = () => {
+
+  const [visible, setVisible] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <React.Fragment>
+      <div>
+        <button
+          onClick={ ()=> {
+            setVisible(!visible);
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          {visible ? '숨기기' : '보이기'}
+        </button>
+        <hr/>
+        {visible && <Info/>}
+      </div>
+      <div>
+        <hr/>
+        <Example />
+        <Months />
+      </div>
+      <div>
+        <hr/>
+        <Counter2 init={5}/>
+      </div>
+      <div>
+        <hr/>
+        <Info/>
+      </div>
+      <div>
+        <hr/>
+        <ContextSample />
+
+      </div>
+
+      <div>
+        <hr/>
+        <FriendStatusWithCounter />
+      </div>
+
+
+
+    </React.Fragment>
   );
-}
+};
 
 export default App;
